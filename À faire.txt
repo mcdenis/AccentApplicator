@@ -1,0 +1,34 @@
+FAIT. La fonction GetSyncSettinName ne devrait elle pas utiliser l'ENum SystemColorIDs puisque ce sont les system colors qui sont synced? Update : Oui, même si on voulait faire une collection/dictionnaire/list whatever de tous les settings, on pouraait pas de toutes façons pcq la classe SystemColorSyncSettings ne serait pas applicable.
+Vérifier si TryParse ne serait pas plus approprié des fois. TryParse a l'avantage de retourner un Type spécifique au lieu d'un Object.
+
+Google "Windows dll minus number" -> http://stackoverflow.com/questions/7350480/understanding-a-negative-offset-of-a-registry-data-reference-to-a-dll-file
+
+
+
+Utiliser des Integers pour stoquer le UsrBrit.
+
+FAIT Ajouter EnableFormsAutoResizing genre.
+
+FAIT. SaveSettings quand WindowsSessionEnded!
+
+FAIT. Enlever Icon de la myFormDialog puisque ça met alors un icon même aux fenêtres FixedDialog comme la frmBrightnessSettings.
+
+FAIT. Si j'enlève la marge de droite des cpr, ne pas oublier d'enlever la marge de gauche des chk.
+
+
+
+FAIT. Mettre message quand seconde instance de l'application lancée.
+
+FAIT. Renomer Resource1 pour LocalizedReources et ne pas le mettre dans le dossier Localized. Si on a à des resources non localisées à mettre, on utilisera le My.Resource genre.
+
+Mettre le bon URL pour le project website et le Readme.
+
+FAIT. ShowInTaskbar=False
+
+http://stackoverflow.com/a/8695121 Startup dans l'registry Tourvé en googlant "CLickOnce Run at startup".
+
+FAIT. Settings encore perdu des fois! Je suppose qu'il serait mieux de juste sauvgarder les réglages à chaque fois qu'il sont changé.
+
+FAIT. Paramètre optionel IgnoreAlpha pas tenu compte. Voir si nécéssaire.
+
+FAIT. Sauver resources du myColorPreviewRectangle quand il n'a pas de dropdown menu.
