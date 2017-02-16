@@ -1,4 +1,4 @@
-# Accent CS
+# Accent Applicator
 Windows 10 introduced a system-wide accent color system that automatically applies
 a custom color to many parts of the UI including third-party apps. Unfortunately, only
 apps made for the Universal Windows Platform benefit from this feature while desktop apps
