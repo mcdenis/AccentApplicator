@@ -9,5 +9,8 @@ some UI elements in desktop apps by updating *System Colors* (i.e. the theme col
 based on your accent color. These changes are usually subtle, but they contribute in 
 reducing the disparities between the classic desktop environment and Universal apps.
 
+![Example 1](http://i.imgur.com/gXz95Qk.png)
+
+[More picture](http://imgur.com/a/X9154)
 ## License
 This program is published under the MIT license.
