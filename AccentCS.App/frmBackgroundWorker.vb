@@ -34,7 +34,7 @@ Public Class frmBackgroundWorker
         'NOTIFY ICON
         With NotifyIcon1
             .Icon = My.Application.Icon
-            .Text = My.Application.Info.ProductName
+            .Text = My.Application.Info.Title
         End With
 
 

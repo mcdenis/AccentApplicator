@@ -17,7 +17,7 @@ Public NotInheritable Class frmMain
     End Property
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Text = My.Application.Info.ProductName + " Options"
+        Text = My.Application.Info.Title + " Options"
 
         'Set the ToolstripRenderer for context menus
 

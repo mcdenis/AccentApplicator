@@ -288,6 +288,15 @@ Namespace My
                 Me("ForeSysColorUsrValue_HighlightText") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public ReadOnly Property General_SaveSettings() As Boolean
+            Get
+                Return CType(Me("General_SaveSettings"),Boolean)
+            End Get
+        End Property
     End Class
 End Namespace
 

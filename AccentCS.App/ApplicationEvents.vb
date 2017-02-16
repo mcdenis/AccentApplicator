@@ -29,7 +29,7 @@ Namespace My
                     stMsgDetails = stMsgDetails.Substring(0, stMsgDetails.Length - 1)
                     stMsgDetails += "."
                     'Shows the message.
-                    MsgBox(String.Format(Resources.LocalizedResources.WarningPart_Startup, Application.Info.ProductName) +
+                    MsgBox(String.Format(Resources.LocalizedResources.WarningPart_Startup, Application.Info.Title) +
                            stMsgDetails, MsgBoxStyle.Exclamation)
                 End If
             End If
@@ -37,7 +37,7 @@ Namespace My
 
         Private Sub MyApplication_StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs) Handles Me.StartupNextInstance
             e.BringToForeground = False 'We disable this because the app has not visible window most of the time anyway.
-            MsgBox(String.Format(Resources.LocalizedResources.Info_ExistingAppInstance, Application.Info.ProductName), MsgBoxStyle.Information)
+            MsgBox(String.Format(Resources.LocalizedResources.Info_ExistingAppInstance, Application.Info.Title), MsgBoxStyle.Information)
         End Sub
 
     End Class
