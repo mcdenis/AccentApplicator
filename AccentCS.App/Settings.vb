@@ -67,7 +67,7 @@ Namespace My
             'We really need to save the settings all the time because when the Windows session ends, Windows kills
             'the process without giving it time to save its settings. I have tried cleanly exiting the app and even just saving the settings
             'when the SessionEnded system event is raised, but the results were too inconsistent.
-            Settings.Save()
+            Save()
         End Sub
 
 
@@ -109,7 +109,7 @@ Namespace My
         Private Sub CreateSysColorsSyncSettingsLists()
             _writableSysColorsSyncSettings = New Dictionary(Of SystemColorIDs, SystemColorSyncSettings)
 
-            For Each value As Configuration.SettingsPropertyValue In Settings.PropertyValues
+            For Each value As Configuration.SettingsPropertyValue In PropertyValues
                 Dim tabPropNameParts() As String = value.Name.Split("_"c)
                 If tabPropNameParts.Length >= 3 AndAlso tabPropNameParts(0) = "SyncSetting" AndAlso tabPropNameParts(2) = "Sync" Then
                     Dim SysColorId As SystemColorIDs
@@ -126,7 +126,7 @@ Namespace My
         Private Sub CreateForeSysColorSettingsList()
             _writableForeSysColorsUsrValues = New Dictionary(Of SystemColorIDs, Color)
 
-            For Each value As Configuration.SettingsPropertyValue In Settings.PropertyValues
+            For Each value As Configuration.SettingsPropertyValue In PropertyValues
                 Dim tabPropNameParts() As String = value.Name.Split("_"c)
                 If tabPropNameParts.Length >= 2 AndAlso tabPropNameParts(0) = "ForeSysColorUsrValue" Then
                     Dim SysColorId As SystemColorIDs

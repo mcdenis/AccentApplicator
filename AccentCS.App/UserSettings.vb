@@ -14,7 +14,7 @@
         Private Function GetWindowsColoredTitleBar() As Integer
             Dim inRegValue As Integer
             Try
-                inRegValue = DirectCast(My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\DWM\", "ColorPrevalence", Nothing), Integer)
+                inRegValue = DirectCast(Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\DWM\", "ColorPrevalence", Nothing), Integer)
             Catch ex As Exception
                 Return 1
             End Try
