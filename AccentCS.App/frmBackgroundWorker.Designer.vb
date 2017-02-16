@@ -88,8 +88,10 @@ Partial Class frmBackgroundWorker
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(40, 33)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Location = New System.Drawing.Point(-32000, -32000)
         Me.Name = "frmBackgroundWorker"
         Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "frmBackgroundWorker"
         Me.cmsNotifyIcon.ResumeLayout(False)
         Me.ResumeLayout(False)
