@@ -67,7 +67,9 @@ Namespace My
             'We really need to save the settings all the time because when the Windows session ends, Windows kills
             'the process without giving it time to save its settings. I have tried cleanly exiting the app and even just saving the settings
             'when the SessionEnded system event is raised, but the results were too inconsistent.
-            Save()
+            If General_SaveSettings Then
+                Save()
+            End If
         End Sub
 
 
