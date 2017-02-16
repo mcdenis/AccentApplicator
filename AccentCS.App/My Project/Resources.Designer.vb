@@ -88,7 +88,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to https://www.google.ca.
+        '''  Looks up a localized string similar to https://github.com/mcdenis/AccentApplicator.
         '''</summary>
         Friend ReadOnly Property ExternalLink_ProjectURL() As String
             Get
