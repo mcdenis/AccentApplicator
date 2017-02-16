@@ -1,1 +1,5 @@
 Publié sur Github.
+
+Des dans le My Namespace (MyComputer et MySettings) faisaient référence à leur instance à travers My.[Une propriété] au lieu de Me.
+
+Corrigé un tit oublis : on utilise maintenant le Pruduct name au lieu de l'assembly name dans le existing instance message.
