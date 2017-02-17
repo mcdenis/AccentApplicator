@@ -23,8 +23,8 @@
         'The message is sent two times when a change occurs: once when 
         'the "Window Style" is changed and another time when the 
         '"Extended Window Style" is changed. We only consider the
-        'latter, which I *guess*, includes the former.
-        If m.Msg = Helpers.Win32Value.WM.STYLECHANGED And m.WParam.ToInt32 = Helpers.Win32Value.GWL.EXSTYLE Then
+        'former.
+        If m.Msg = Helpers.Win32Value.WM.STYLECHANGED And m.WParam.ToInt32 = Helpers.Win32Value.GWL.STYLE Then
             OnFormBorderStyleChanged()
         End If
     End Sub
