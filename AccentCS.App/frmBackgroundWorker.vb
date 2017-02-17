@@ -12,32 +12,19 @@ Public Class frmBackgroundWorker
     Protected Overrides Sub OnLoad(e As EventArgs)
         MyBase.OnLoad(e)
 
-        'CONTEXT MENU
-        'Configure Toolstrip renderer
-        Dim renderer As ToolStripSystemRendererEx
-        If My.Settings.UI_ContextMenuStyle > 0 Then
-            renderer = New ToolStripSystemRendererEx
-            If My.Settings.UI_ContextMenuStyle = 2 Then
-                renderer.Theme = ToolStripSystemRendererEx.Themes.ImmersiveDark
-                cmsNotifyIcon.ImmersiveMenuLayout = True
-                cmsNotifyIcon.IsTaskbarMenu = True
-            End If
-            cmsNotifyIcon.Renderer = renderer
-        Else
-            cmsNotifyIcon.RenderMode = ToolStripRenderMode.System
-        End If
+        'Set the appearance of the tray icon context menu
+        PrepareControls.PrepareContextMenuStripSystems({cmsNotifyIcon}, True)
 
         'Make the Restore command of the cmsNotifyIcon bold cause it's the main command (the one that's triggered when the icon is double-clicked.)
         tmiNotifyIcon_AppOptions.Font = New Font(tmiNotifyIcon_AppOptions.Font, FontStyle.Bold)
 
-
-        'NOTIFY ICON
+        'Set the appearance of the tray icon
         With NotifyIcon1
             .Icon = My.Application.Icon
             .Text = My.Application.Info.Title
         End With
 
-
+        'Sync colors right when the app is launched
         If Not Debugger.IsAttached Then
             Try
                 Synchronizer.Instance.RestoreLastForeColors()

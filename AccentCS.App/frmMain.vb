@@ -1,10 +1,9 @@
 ﻿Imports AccentCS.Helpers
-Imports AccentCS.Controls
+
 
 Public NotInheritable Class frmMain
 
     Private colAccent As Color 'For now, we don't really need to make this variable a field.
-    Private ContextMenuRend As ToolStripSystemRendererEx
 
     Private _syncableSystemColorIDs As ObjectModel.ReadOnlyCollection(Of SystemColorIDs)
     Private ReadOnly Property SyncableSystemColorIDs As ObjectModel.ReadOnlyCollection(Of SystemColorIDs)
@@ -16,30 +15,14 @@ Public NotInheritable Class frmMain
         End Get
     End Property
 
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Text = My.Application.Info.Title + " Options"
 
-        'Set the ToolstripRenderer for context menus
+        'Set the appearance of popup menus
+        PrepareControls.PrepareContextMenuStripSystems({cmsAccentColor, cmsSystemColors}, False)
 
-        'Meaning of the UI_ContextMenuStyle values:
-        '0 = no custom renderer. We just use the .net provided system renderer.
-        '1 = we use the custom renderer, but only with its standard theme.
-        '2 = we use the custom renderer with the Immersive theme which can be light or dark.
-        If My.Settings.UI_ContextMenuStyle > 0 Then
-            ContextMenuRend = New ToolStripSystemRendererEx
-            If My.Settings.UI_ContextMenuStyle = 2 Then
-                ContextMenuRend.Theme = ToolStripSystemRendererEx.Themes.ImmersiveLight
-                cmsAccentColor.ImmersiveMenuLayout = True
-                cmsSystemColors.ImmersiveMenuLayout = True
-            End If
-            cmsAccentColor.Renderer = ContextMenuRend
-            cmsSystemColors.Renderer = ContextMenuRend
-        Else
-            cmsAccentColor.RenderMode = ToolStripRenderMode.System
-            cmsSystemColors.RenderMode = ToolStripRenderMode.System
-        End If
-
-
+        'Set the appearance of header labels
         Dim fontBold As New Font(Font, FontStyle.Bold)
         lblAccentColor.Font = fontBold
         lblSystemColors.Font = fontBold
@@ -54,10 +37,12 @@ Public NotInheritable Class frmMain
             Next
         Next
 
+        'Set the initial values for the colors
         colAccent = AccentColor.GetAccentColor(My.Settings.General_AccentSource, pIgnoreAlpha:=True)
         RefreshAccentColorControls()
         RefreshSystemColorControls()
 
+        'Listen to future changes and react accordignly in the handling method
         AddHandler My.Settings.PropertyChanged, AddressOf Settings_PropertyChanged
     End Sub
 
