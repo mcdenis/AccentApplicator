@@ -234,18 +234,16 @@ Public NotInheritable Class frmMain
         'We only need to refresh the tooltip value, because the background color is automatically
         'refreshed by the system.
         For Each cpr As Control In tlpSystemColors.Controls.OfType(Of myColorPreviewRectangle)
-            If TypeOf (cpr) Is myColorPreviewRectangle Then
-                Dim stRGB As String
-                If cpr.Name = NameOf(cprHotTrack) Then
-                    stRGB = cpr.ForeColor.ToRGBString
-                Else
-                    stRGB = cpr.BackColor.ToRGBString
-                End If
-                ToolTip1.SetToolTip(cpr, My.Resources.LocalizedResources.Caption_CurrentRGBValue +
-                                    Environment.NewLine + stRGB +
-                                    Environment.NewLine + Environment.NewLine +
-                                    My.Resources.LocalizedResources.Caption_ClickForMoreOptions)
+            Dim stRGB As String
+            If cpr.Name = NameOf(cprHotTrack) Then
+                stRGB = cpr.ForeColor.ToRGBString
+            Else
+                stRGB = cpr.BackColor.ToRGBString
             End If
+            ToolTip1.SetToolTip(cpr, My.Resources.LocalizedResources.Caption_CurrentRGBValue +
+                                Environment.NewLine + stRGB +
+                                Environment.NewLine + Environment.NewLine +
+                                My.Resources.LocalizedResources.Caption_ClickForMoreOptions)
         Next
     End Sub
 
