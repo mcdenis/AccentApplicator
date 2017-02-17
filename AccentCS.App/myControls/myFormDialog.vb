@@ -24,7 +24,7 @@
         'the "Window Style" is changed and another time when the 
         '"Extended Window Style" is changed. We only consider the
         'latter, which I *guess*, includes the former.
-        If m.Msg = Win32Value.WM.STYLECHANGED And m.WParam.ToInt32 = Win32Value.GWL.EXSTYLE Then
+        If m.Msg = Helpers.Win32Value.WM.STYLECHANGED And m.WParam.ToInt32 = Helpers.Win32Value.GWL.EXSTYLE Then
             OnFormBorderStyleChanged()
         End If
     End Sub

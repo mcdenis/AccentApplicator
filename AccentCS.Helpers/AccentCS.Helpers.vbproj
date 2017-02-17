@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="RGBHSL.vb" />
     <Compile Include="SystemColors.vb" />
+    <Compile Include="Win32Value.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
