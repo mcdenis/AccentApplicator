@@ -32,23 +32,17 @@
         Next
 
         'Sets the initial values for the controls that directly depend on My.Settings
-        Dim objSetBrit = My.Settings.Item(My.Settings.GetSysColorSyncSettingName(CurrentSystemColor, My.SyncColorSettings.SetBrit))
-        chkSetBrightness.Checked = DirectCast(objSetBrit, Boolean)
-
-        Dim objUsrBrit = My.Settings.Item(My.Settings.GetSysColorSyncSettingName(CurrentSystemColor, My.SyncColorSettings.UsrBrit))
-        tbrBrightness.Value = CInt(DirectCast(objUsrBrit, Double) * 100)
+        Dim syncSettings = My.Settings.SystemColorsSyncSettings(CurrentSystemColor)
+        chkSetBrightness.Checked = syncSettings.SetBrightness.Value
+        tbrBrightness.Value = CInt(syncSettings.UserBrightness.Value * 100)
     End Sub
 
     Private Sub frmBrightnessSettings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         'Apply change if OK clicked
         If DialogResult = DialogResult.OK Then
-            'SetBrit
-            Dim stSetBritSettingName As String = My.Settings.GetSysColorSyncSettingName(CurrentSystemColor, My.SyncColorSettings.SetBrit)
-            My.Settings.Item(stSetBritSettingName) = chkSetBrightness.Checked
-
-            'UsrBrit
-            Dim stUsrBritSettingName As String = My.Settings.GetSysColorSyncSettingName(CurrentSystemColor, My.SyncColorSettings.UsrBrit)
-            My.Settings.Item(stUsrBritSettingName) = tbrBrightness.Value / 100 'Indeed, we store the value as a double between 0 and 1. Maybe it would be better to store it as is and only convert it when it's time to sync...
+            Dim syncSettings = My.Settings.SystemColorsSyncSettings(CurrentSystemColor)
+            syncSettings.SetBrightness.Value = chkSetBrightness.Checked
+            syncSettings.UserBrightness.Value = tbrBrightness.Value / 100 'Indeed, we store the value as a double between 0 and 1. Maybe it would be better to store it as is and only convert it when it's time to sync...
         End If
     End Sub
 

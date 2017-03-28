@@ -24,8 +24,8 @@ Public Class Synchronizer
     ''' <param name="pAccent"></param>
     ''' <returns></returns>
     Private Function GetColorToApply(pSettings As My.SystemColorSyncSettings, pAccent As Color) As Color
-        If pSettings.SetBrightness Then
-            Return RGBHSL.SetBrightness(pAccent, pSettings.UserBrightness)
+        If pSettings.SetBrightness.Value Then
+            Return RGBHSL.SetBrightness(pAccent, pSettings.UserBrightness.Value)
         Else
             Return pAccent
         End If
@@ -55,11 +55,11 @@ Public Class Synchronizer
         Dim inMaxIndex As Integer = My.Settings.SystemColorsSyncSettings.Count - 1
         For i As Integer = 0 To inMaxIndex
             Dim element As KeyValuePair(Of SystemColorIDs, My.SystemColorSyncSettings) = My.Settings.SystemColorsSyncSettings.ElementAt(i)
-            If element.Value.Sync Then
+            If element.Value.Sync.Value Then
                 lstSysColorIDs.Add(element.Key)
                 Dim colNew As Color
-                If element.Value.SetBrightness Then
-                    colNew = RGBHSL.SetBrightness(pAccent, element.Value.UserBrightness)
+                If element.Value.SetBrightness.Value Then
+                    colNew = RGBHSL.SetBrightness(pAccent, element.Value.UserBrightness.Value)
                 Else
                     colNew = pAccent
                 End If
@@ -110,9 +110,10 @@ Public Class Synchronizer
         Dim dicSettings = My.Settings.ForeSystemColorsUserValues
         For i As Integer = 0 To dicSettings.Count - 1
             Dim element = dicSettings.ElementAt(i)
-            If element.Value.IsEmpty = False Then
+            Dim color = element.Value.Value
+            If element.Value.Value.IsEmpty = False Then
                 lstSysColorIDs.Add(element.Key)
-                lstNewColors.Add(element.Value)
+                lstNewColors.Add(color)
             End If
         Next
 

@@ -156,6 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Setting.vb" />
     <Compile Include="SystemColorSyncSettings.vb" />
     <Compile Include="Settings.vb" />
     <Compile Include="Synchronizer.vb" />
