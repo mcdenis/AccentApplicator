@@ -140,6 +140,15 @@ as the base accent color</value>
   <data name="Info_ExistingAppInstance" xml:space="preserve">
     <value>Another instance of {0} is already running. If you can't find it, it may be hidden in the notification area.</value>
   </data>
+  <data name="Info_FirstRunGreating" xml:space="preserve">
+    <value>Thank you for installing {0}! 
+
+From now on, it will automatically start when you login and ensure that the colors of the desired UI elements in desktop apps are kept in sync with your accent color. 
+
+To configure the app, use its tray icon. If you don't want {0} to start automatically when you login, use the Startup tab in Task Manager. Finally, if you ever decide to uninstall the app, you might need to logout of your account to restore all default colors. 
+
+Enjoy!</value>
+  </data>
   <data name="Info_ThemeResetSuccess" xml:space="preserve">
     <value>System colors successfully restored to defaults.</value>
   </data>

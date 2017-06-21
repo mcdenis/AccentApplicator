@@ -33,6 +33,13 @@ Namespace My
                            stMsgDetails, MsgBoxStyle.Exclamation)
                 End If
             End If
+
+            'Shows first run dialog, if appropriate
+            If Settings.General_SaveSettings And Settings.Internal_FirstRunCompleted = False Then
+                MsgBox(String.Format(Resources.LocalizedResources.Info_FirstRunGreating, Application.Info.Title))
+                Settings.Internal_FirstRunCompleted = True
+            End If
+
         End Sub
 
         Private Sub MyApplication_StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs) Handles Me.StartupNextInstance

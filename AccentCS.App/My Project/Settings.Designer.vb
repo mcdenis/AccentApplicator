@@ -297,6 +297,18 @@ Namespace My
                 Return CType(Me("General_SaveSettings"),Boolean)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Internal_FirstRunCompleted() As Boolean
+            Get
+                Return CType(Me("Internal_FirstRunCompleted"),Boolean)
+            End Get
+            Set
+                Me("Internal_FirstRunCompleted") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

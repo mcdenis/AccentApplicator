@@ -130,6 +130,21 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Thank you for installing {0}! 
+        '''
+        '''From now on, it will automatically start when you login and ensure that the colors of the desired UI elements in desktop apps are kept in sync with your accent color. 
+        '''
+        '''To configure the app, use its tray icon. If you don&apos;t want {0} to start automatically when you login, use the Startup tab in Task Manager. Finally, if you ever decide to uninstall the app, you might need to logout of your account to restore all default colors. 
+        '''
+        '''Enjoy!.
+        '''</summary>
+        Friend Shared ReadOnly Property Info_FirstRunGreating() As String
+            Get
+                Return ResourceManager.GetString("Info_FirstRunGreating", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to System colors successfully restored to defaults..
         '''</summary>
         Friend Shared ReadOnly Property Info_ThemeResetSuccess() As String
