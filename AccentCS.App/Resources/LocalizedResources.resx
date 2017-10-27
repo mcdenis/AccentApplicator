@@ -140,7 +140,7 @@ as the base accent color</value>
   <data name="Info_ExistingAppInstance" xml:space="preserve">
     <value>Another instance of {0} is already running. If you can't find it, it may be hidden in the notification area.</value>
   </data>
-  <data name="Info_FirstRunGreating" xml:space="preserve">
+  <data name="Info_FirstRunGreeting" xml:space="preserve">
     <value>Thank you for installing {0}! 
 
 From now on, it will automatically start when you login and ensure that the colors of the desired UI elements in desktop apps are kept in sync with your accent color. 

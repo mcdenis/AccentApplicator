@@ -138,9 +138,9 @@ Namespace My.Resources
         '''
         '''Enjoy!.
         '''</summary>
-        Friend Shared ReadOnly Property Info_FirstRunGreating() As String
+        Friend Shared ReadOnly Property Info_FirstRunGreeting() As String
             Get
-                Return ResourceManager.GetString("Info_FirstRunGreating", resourceCulture)
+                Return ResourceManager.GetString("Info_FirstRunGreeting", resourceCulture)
             End Get
         End Property
         

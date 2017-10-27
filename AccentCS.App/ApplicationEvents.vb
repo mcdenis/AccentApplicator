@@ -36,7 +36,12 @@ Namespace My
 
             'Shows first run dialog, if appropriate
             If Settings.General_SaveSettings And Settings.Internal_FirstRunCompleted = False Then
-                MsgBox(String.Format(Resources.LocalizedResources.Info_FirstRunGreating, Application.Info.Title))
+                'IMPORTANT: The 'FirstRunCompleted' setting did not exist in the initial release of the app. 
+                'Therefore, we must disable the first run dialog for at least one release or else, existing 
+                'users will get the popup out of nowhere after the Windows Store updates the app, which would 
+                'be a extremely annoying for the hundreds of existing users.
+
+                'MsgBox(String.Format(Resources.LocalizedResources.Info_FirstRunGreeting, Application.Info.Title))
                 Settings.Internal_FirstRunCompleted = True
             End If
 
