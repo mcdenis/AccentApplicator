@@ -78,8 +78,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\MyExtensions\Application.vb" />
-    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="My\Application.vb" />
+    <Compile Include="My\ApplicationEvents.vb" />
     <Compile Include="Helpers\ExtensionMethods.vb" />
     <Compile Include="frmAboutBox.Designer.vb">
       <DependentUpon>frmAboutBox.vb</DependentUpon>
@@ -156,11 +156,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Setting.vb" />
-    <Compile Include="SystemColorSyncSettings.vb" />
-    <Compile Include="Settings.vb" />
+    <Compile Include="My\Setting.vb" />
+    <Compile Include="My\SystemColorSyncSettings.vb" />
+    <Compile Include="My\Settings.vb" />
     <Compile Include="Synchronizer.vb" />
-    <Compile Include="Helpers\MyExtensions\Computer.vb" />
+    <Compile Include="My\Computer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAboutBox.resx">
