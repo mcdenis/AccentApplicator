@@ -81,18 +81,7 @@ Public Class frmBackgroundWorker
     End Sub
 
     Private Sub tmiNotifyIcon_AppOptions_Click(sender As Object, e As EventArgs) Handles tmiNotifyIcon_AppOptions.Click, NotifyIcon1.DoubleClick
-        'We show the existing Options dialog if it is already opened. Else, we open a new one.
-        Dim OpenedAboutFrms As IEnumerable(Of frmMain) = Application.OpenForms().OfType(Of frmMain)
-        If OpenedAboutFrms.Any Then
-            Dim frmFirstOpened As frmMain = OpenedAboutFrms.First
-            If frmFirstOpened.WindowState = FormWindowState.Minimized Then
-                frmFirstOpened.WindowState = FormWindowState.Normal
-            End If
-            OpenedAboutFrms.First.BringToFront()
-        Else
-            Dim frm As New frmMain()
-            frm.Show()
-        End If
+        frmMain.ShowSingleInstance()
     End Sub
 
     Private Sub tmiNotifyIcon_SyncNow_Click(sender As Object, e As EventArgs) Handles tmiNotifyIcon_SyncNow.Click
@@ -110,17 +99,6 @@ Public Class frmBackgroundWorker
     End Sub
 
     Private Sub tmiNotifyIcon_AboutApp_Click(sender As Object, e As EventArgs) Handles tmiNotifyIcon_AboutApp.Click
-        'We show the existing About dialog if it is already opened. Else, we open a new one.
-        Dim OpenedAboutFrms As IEnumerable(Of frmAboutBox) = Application.OpenForms().OfType(Of frmAboutBox)
-        If OpenedAboutFrms.Any Then
-            Dim frmFirstOpened As frmAboutBox = OpenedAboutFrms.First
-            If frmFirstOpened.WindowState = FormWindowState.Minimized Then
-                frmFirstOpened.WindowState = FormWindowState.Normal
-            End If
-            frmFirstOpened.BringToFront()
-        Else
-            Dim frm As New frmAboutBox()
-            frm.Show()
-        End If
+        frmAboutBox.ShowSingleInstance()
     End Sub
 End Class

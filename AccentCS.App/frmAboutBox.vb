@@ -55,4 +55,21 @@ Public NotInheritable Class frmAboutBox
             picLogo.Image.Dispose()
         End If
     End Sub
+
+    ''' <summary>
+    ''' If an instance of this form is opened, bring it to front. Else, show a new instance.
+    ''' </summary>
+    Public Shared Sub ShowSingleInstance()
+        Dim OpenedAboutFrms As IEnumerable(Of frmAboutBox) = Application.OpenForms().OfType(Of frmAboutBox)
+        If OpenedAboutFrms.Any Then
+            Dim frmFirstOpened As frmAboutBox = OpenedAboutFrms.First
+            If frmFirstOpened.WindowState = FormWindowState.Minimized Then
+                frmFirstOpened.WindowState = FormWindowState.Normal
+            End If
+            frmFirstOpened.BringToFront()
+        Else
+            Dim frm As New frmAboutBox()
+            frm.Show()
+        End If
+    End Sub
 End Class

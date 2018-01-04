@@ -260,4 +260,21 @@ Public NotInheritable Class frmMain
     Private Sub frmMain_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         RemoveHandler My.Settings.PropertyChanged, AddressOf Settings_PropertyChanged
     End Sub
+
+    ''' <summary>
+    ''' If an instance of this form is opened, bring it to front. Else, show a new instance.
+    ''' </summary>
+    Public Shared Sub ShowSingleInstance()
+        Dim OpenedAboutFrms As IEnumerable(Of frmMain) = Application.OpenForms().OfType(Of frmMain)
+        If OpenedAboutFrms.Any Then
+            Dim frmFirstOpened As frmMain = OpenedAboutFrms.First
+            If frmFirstOpened.WindowState = FormWindowState.Minimized Then
+                frmFirstOpened.WindowState = FormWindowState.Normal
+            End If
+            frmFirstOpened.BringToFront()
+        Else
+            Dim frm As New frmMain()
+            frm.Show()
+        End If
+    End Sub
 End Class
