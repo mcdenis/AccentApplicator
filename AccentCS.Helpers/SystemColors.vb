@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.ComponentModel
+Imports System.Windows.Forms.VisualStyles
 
 Public Enum SystemColorIDs As Integer
     ActiveCaption = 2
@@ -14,98 +15,43 @@ End Enum
 Public Module SystemColorManipulation
 
     '''<exception cref="Win32Exception">Occurs when SetSysColor fails.</exception>
+    '''<exception cref="InvalidOperationException">Occurs when visual styles are disabled.</exception>
     ''' <summary>
-    ''' Restore the default colors for the desired system colors.
+    ''' Restore the default colors for the desired system colors using the current system theme.
     ''' </summary>
+    ''' <param name="pSysColorIDs">
+    ''' The system colors that sould be restored. If null is specified, all the system colors are restored.
+    ''' </param>
     Public Sub RestoreDefaultColors(Optional pSysColorIDs() As SystemColorIDs = Nothing)
-        'We are lazy, so we just hard code the default colors. Ideally, we would read the Msstyles or something like that.
-
-        Const inDEFAULT_COLOR_ACTIVECAPTION As Integer = 13743257
-        Const inDEFAULT_COLOR_ACTIVECAPTIONTEXT As Integer = 0
-        Const inDEFAULT_COLOR_GRADIENTACTIVECAPTION As Integer = 15389113
-        Const inDEFAULT_COLOR_HIGHLIGHT As Integer = 16750899
-        Const inDEFAULT_COLOR_HIGHLIGHTTEXT As Integer = 16777215
-        Const inDEFAULT_COLOR_HOTTRACK As Integer = 13395456
-        Const inDEFAULT_COLOR_MENUHIGHLIGHT As Integer = 16750899
-
-        Dim inActiveCaption As Integer
-        Dim inActiveCaptionText As Integer
-        Dim inGradientActiveCaption As Integer
-        Dim inHighlight As Integer
-        Dim inHighlightText As Integer
-        Dim inHotTrack As Integer
-        Dim inMenuHighlight As Integer
-
-        If Environment.OSVersion.Version.Build < 14361 Then
-            inActiveCaption = inDEFAULT_COLOR_ACTIVECAPTION
-            inGradientActiveCaption = inDEFAULT_COLOR_GRADIENTACTIVECAPTION
-            inHighlight = inDEFAULT_COLOR_HIGHLIGHT
-            inMenuHighlight = inDEFAULT_COLOR_MENUHIGHLIGHT
-            inHotTrack = inDEFAULT_COLOR_HOTTRACK
-
-            inActiveCaptionText = inDEFAULT_COLOR_ACTIVECAPTIONTEXT
-            inHighlightText = inDEFAULT_COLOR_HIGHLIGHTTEXT
-        Else
-            'In the Anniversary Update, the default color of Hilight and MenuHilight was changed.
-            inActiveCaption = inDEFAULT_COLOR_ACTIVECAPTION
-            inGradientActiveCaption = inDEFAULT_COLOR_GRADIENTACTIVECAPTION
-            inHighlight = 14120960
-            inMenuHighlight = 14120960
-            inHotTrack = inDEFAULT_COLOR_HOTTRACK
-
-            inActiveCaptionText = inDEFAULT_COLOR_ACTIVECAPTIONTEXT
-            inHighlightText = inDEFAULT_COLOR_HIGHLIGHTTEXT
+        'Note that GetThemeSysColor still works even when it is passed a null theme handle.
+        'In that case, however, it will just return the value of GetSysColor, which is obviously
+        'not what we want, since that means that we'll just apply the same colors that are
+        'are already in effect, hence why we throw an exception if visual styles are not enabled.
+        If VisualStyleRenderer.IsSupported = False Then
+            Throw New InvalidOperationException("Cannot restore default colors from the theme, because visual styles are not currently enabled for the application.")
         End If
 
         Dim tabSysColorIDs() As SystemColorIDs
-
         'If the parameter contains no ID, we assume the caller wants to restore every single known system color.
         If pSysColorIDs Is Nothing Then
             tabSysColorIDs = DirectCast([Enum].GetValues(GetType(SystemColorIDs)), SystemColorIDs())
+        ElseIf pSysColorIDs.Length < 1 Then
+            'Ids array is empty, so nothing to do.
+            Return
         Else
             tabSysColorIDs = pSysColorIDs
         End If
 
         'We create the array containing the new color associated to each System Color ID.
-        Dim NewColors(tabSysColorIDs.Length - 1) As Color
+        'Here, the Button element is an arbitrary choice. We just need a theme handle.
+        Dim renderer = New VisualStyleRenderer(VisualStyleElement.Button.PushButton.Normal)
+        Dim newColors(tabSysColorIDs.Length - 1) As Color
         For i As Integer = 0 To tabSysColorIDs.Length - 1
-            Dim id As SystemColorIDs = tabSysColorIDs(i)
-            Dim inCol As Integer
-            Dim col As Color
-            Select Case id
-                Case SystemColorIDs.ActiveCaption
-                    inCol = inActiveCaption
-
-                Case SystemColorIDs.ActiveCaptionText
-                    inCol = inActiveCaptionText
-
-                Case SystemColorIDs.GradientActiveCaption
-                    inCol = inGradientActiveCaption
-
-                Case SystemColorIDs.Highlight
-                    inCol = inHighlight
-
-                Case SystemColorIDs.HighlightText
-                    inCol = inHighlightText
-
-                Case SystemColorIDs.HotTrack
-                    inCol = inHotTrack
-
-                Case SystemColorIDs.MenuHighlight
-                    inCol = inMenuHighlight
-
-                Case Else
-                    Throw New ArgumentException(My.Resources.LocalizedResources.Error_UnsupportedSysColor)
-            End Select
-
-            col = Color.FromArgb(255, Color.FromArgb(inCol)).Invert
-            NewColors(i) = col
+            newColors(i) = ColorTranslator.FromWin32(NativeMethods.GetThemeSysColor(renderer.Handle, tabSysColorIDs(i)))
         Next
 
-
-
         'Apply changes
-        SetSystemColors(tabSysColorIDs, NewColors)
+        SetSystemColors(tabSysColorIDs, newColors)
     End Sub
 
     ''' <summary>
