@@ -20,6 +20,7 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.cprAccent = New AccentCS.App.myColorPreviewRectangle()
         Me.cmsAccentColor = New AccentCS.App.myContextMenuStripSystem()
         Me.tmiAccentColor_AccentPalette = New AccentCS.App.myToolStripMenuItem()
@@ -44,22 +45,22 @@ Partial Class frmMain
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.lblAccentColor = New AccentCS.App.myLabel()
         Me.lblSystemColors = New AccentCS.App.myLabel()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.chkInstantOptionChanges = New AccentCS.App.myCheckBox()
+        Me.lblGeneral = New AccentCS.App.myLabel()
+        Me.chkShowNotifyIcon = New AccentCS.App.myCheckBox()
         Me.FormContent.SuspendLayout()
         Me.cmsAccentColor.SuspendLayout()
         Me.cmsSystemColors.SuspendLayout()
         Me.tlpSystemColors.SuspendLayout()
+        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'FormContent
         '
-        Me.FormContent.Controls.Add(Me.chkInstantOptionChanges)
-        Me.FormContent.Controls.Add(Me.lblSystemColors)
-        Me.FormContent.Controls.Add(Me.lblAccentColor)
         Me.FormContent.Controls.Add(Me.btnOK)
-        Me.FormContent.Controls.Add(Me.tlpSystemColors)
-        Me.FormContent.Controls.Add(Me.cprAccent)
-        Me.FormContent.Size = New System.Drawing.Size(296, 285)
+        Me.FormContent.Controls.Add(Me.TableLayoutPanel1)
+        Me.FormContent.Size = New System.Drawing.Size(308, 353)
         '
         'cprAccent
         '
@@ -67,10 +68,10 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cprAccent.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cprAccent.DropDownMenu = Me.cmsAccentColor
-        Me.cprAccent.Location = New System.Drawing.Point(12, 29)
+        Me.cprAccent.Location = New System.Drawing.Point(3, 16)
         Me.cprAccent.Name = "cprAccent"
         Me.cprAccent.RepresentedColor = AccentCS.App.CPRRepresentedColors.Accent
-        Me.cprAccent.Size = New System.Drawing.Size(272, 33)
+        Me.cprAccent.Size = New System.Drawing.Size(284, 33)
         Me.cprAccent.TabIndex = 1
         Me.cprAccent.Text = " "
         Me.cprAccent.UseVisualStyleBackColor = False
@@ -130,6 +131,8 @@ Partial Class frmMain
         '
         Me.tlpSystemColors.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tlpSystemColors.AutoSize = True
+        Me.tlpSystemColors.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.tlpSystemColors.ColumnCount = 2
         Me.tlpSystemColors.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.tlpSystemColors.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -143,7 +146,8 @@ Partial Class frmMain
         Me.tlpSystemColors.Controls.Add(Me.cprHighlight, 1, 2)
         Me.tlpSystemColors.Controls.Add(Me.cprMenuHighlight, 1, 3)
         Me.tlpSystemColors.Controls.Add(Me.cprHotTrack, 1, 4)
-        Me.tlpSystemColors.Location = New System.Drawing.Point(12, 97)
+        Me.tlpSystemColors.Location = New System.Drawing.Point(0, 75)
+        Me.tlpSystemColors.Margin = New System.Windows.Forms.Padding(0)
         Me.tlpSystemColors.Name = "tlpSystemColors"
         Me.tlpSystemColors.RowCount = 5
         Me.tlpSystemColors.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
@@ -151,7 +155,7 @@ Partial Class frmMain
         Me.tlpSystemColors.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.tlpSystemColors.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.tlpSystemColors.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.tlpSystemColors.Size = New System.Drawing.Size(272, 136)
+        Me.tlpSystemColors.Size = New System.Drawing.Size(290, 140)
         Me.tlpSystemColors.TabIndex = 4
         '
         'chkActiveCaption
@@ -160,8 +164,7 @@ Partial Class frmMain
         Me.chkActiveCaption.AutoSize = True
         Me.chkActiveCaption.Checked = Global.AccentCS.App.My.MySettings.Default.SyncSetting_ActiveCaption_Sync
         Me.chkActiveCaption.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "SyncSetting_ActiveCaption_Sync", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkActiveCaption.Location = New System.Drawing.Point(0, 5)
-        Me.chkActiveCaption.Margin = New System.Windows.Forms.Padding(0, 3, 3, 3)
+        Me.chkActiveCaption.Location = New System.Drawing.Point(3, 5)
         Me.chkActiveCaption.Name = "chkActiveCaption"
         Me.chkActiveCaption.Size = New System.Drawing.Size(99, 17)
         Me.chkActiveCaption.TabIndex = 0
@@ -175,8 +178,7 @@ Partial Class frmMain
         Me.chkGradientActiveCaption.AutoSize = True
         Me.chkGradientActiveCaption.Checked = Global.AccentCS.App.My.MySettings.Default.SyncSetting_GradientActiveCaption_Sync
         Me.chkGradientActiveCaption.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "SyncSetting_GradientActiveCaption_Sync", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkGradientActiveCaption.Location = New System.Drawing.Point(0, 32)
-        Me.chkGradientActiveCaption.Margin = New System.Windows.Forms.Padding(0, 3, 3, 3)
+        Me.chkGradientActiveCaption.Location = New System.Drawing.Point(3, 33)
         Me.chkGradientActiveCaption.Name = "chkGradientActiveCaption"
         Me.chkGradientActiveCaption.Size = New System.Drawing.Size(150, 17)
         Me.chkGradientActiveCaption.TabIndex = 1
@@ -191,8 +193,7 @@ Partial Class frmMain
         Me.chkHighlight.Checked = Global.AccentCS.App.My.MySettings.Default.SyncSetting_Highlight_Sync
         Me.chkHighlight.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkHighlight.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "SyncSetting_Highlight_Sync", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkHighlight.Location = New System.Drawing.Point(0, 59)
-        Me.chkHighlight.Margin = New System.Windows.Forms.Padding(0, 3, 3, 3)
+        Me.chkHighlight.Location = New System.Drawing.Point(3, 61)
         Me.chkHighlight.Name = "chkHighlight"
         Me.chkHighlight.Size = New System.Drawing.Size(95, 17)
         Me.chkHighlight.TabIndex = 2
@@ -207,8 +208,7 @@ Partial Class frmMain
         Me.chkMenuHighlight.Checked = Global.AccentCS.App.My.MySettings.Default.SyncSetting_MenuHighlight_Sync
         Me.chkMenuHighlight.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkMenuHighlight.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "SyncSetting_MenuHighlight_Sync", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkMenuHighlight.Location = New System.Drawing.Point(0, 86)
-        Me.chkMenuHighlight.Margin = New System.Windows.Forms.Padding(0, 3, 3, 3)
+        Me.chkMenuHighlight.Location = New System.Drawing.Point(3, 89)
         Me.chkMenuHighlight.Name = "chkMenuHighlight"
         Me.chkMenuHighlight.Size = New System.Drawing.Size(124, 17)
         Me.chkMenuHighlight.TabIndex = 3
@@ -223,8 +223,7 @@ Partial Class frmMain
         Me.chkHotTrack.Checked = Global.AccentCS.App.My.MySettings.Default.SyncSetting_HotTrack_Sync
         Me.chkHotTrack.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkHotTrack.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "SyncSetting_HotTrack_Sync", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkHotTrack.Location = New System.Drawing.Point(0, 113)
-        Me.chkHotTrack.Margin = New System.Windows.Forms.Padding(0, 3, 3, 3)
+        Me.chkHotTrack.Location = New System.Drawing.Point(3, 117)
         Me.chkHotTrack.Name = "chkHotTrack"
         Me.chkHotTrack.Size = New System.Drawing.Size(75, 17)
         Me.chkHotTrack.TabIndex = 4
@@ -234,71 +233,76 @@ Partial Class frmMain
         '
         'cprActiveCaption
         '
+        Me.cprActiveCaption.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cprActiveCaption.AutoSize = True
+        Me.cprActiveCaption.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.cprActiveCaption.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.cprActiveCaption.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cprActiveCaption.DropDownMenu = Me.cmsSystemColors
         Me.cprActiveCaption.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.cprActiveCaption.Location = New System.Drawing.Point(156, 3)
-        Me.cprActiveCaption.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
+        Me.cprActiveCaption.Location = New System.Drawing.Point(159, 3)
         Me.cprActiveCaption.Name = "cprActiveCaption"
         Me.cprActiveCaption.RepresentedColor = AccentCS.App.CPRRepresentedColors.ActiveCaption
-        Me.cprActiveCaption.Size = New System.Drawing.Size(116, 21)
+        Me.cprActiveCaption.Size = New System.Drawing.Size(128, 22)
         Me.cprActiveCaption.TabIndex = 5
         Me.cprActiveCaption.UseVisualStyleBackColor = False
         '
         'cprGradientActiveCaption
         '
+        Me.cprGradientActiveCaption.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cprGradientActiveCaption.AutoSize = True
+        Me.cprGradientActiveCaption.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.cprGradientActiveCaption.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.cprGradientActiveCaption.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cprGradientActiveCaption.DropDownMenu = Me.cmsSystemColors
         Me.cprGradientActiveCaption.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.cprGradientActiveCaption.Location = New System.Drawing.Point(156, 30)
-        Me.cprGradientActiveCaption.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
+        Me.cprGradientActiveCaption.Location = New System.Drawing.Point(159, 31)
         Me.cprGradientActiveCaption.Name = "cprGradientActiveCaption"
         Me.cprGradientActiveCaption.RepresentedColor = AccentCS.App.CPRRepresentedColors.GradientActiveCaption
-        Me.cprGradientActiveCaption.Size = New System.Drawing.Size(116, 21)
+        Me.cprGradientActiveCaption.Size = New System.Drawing.Size(128, 22)
         Me.cprGradientActiveCaption.TabIndex = 6
         Me.cprGradientActiveCaption.UseVisualStyleBackColor = False
         '
         'cprHighlight
         '
+        Me.cprHighlight.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cprHighlight.AutoSize = True
+        Me.cprHighlight.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.cprHighlight.BackColor = System.Drawing.SystemColors.Highlight
-        Me.cprHighlight.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cprHighlight.DropDownMenu = Me.cmsSystemColors
         Me.cprHighlight.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.cprHighlight.Location = New System.Drawing.Point(156, 57)
-        Me.cprHighlight.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
+        Me.cprHighlight.Location = New System.Drawing.Point(159, 59)
         Me.cprHighlight.Name = "cprHighlight"
         Me.cprHighlight.RepresentedColor = AccentCS.App.CPRRepresentedColors.Highlight
-        Me.cprHighlight.Size = New System.Drawing.Size(116, 21)
+        Me.cprHighlight.Size = New System.Drawing.Size(128, 22)
         Me.cprHighlight.TabIndex = 7
         Me.cprHighlight.UseVisualStyleBackColor = False
         '
         'cprMenuHighlight
         '
+        Me.cprMenuHighlight.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cprMenuHighlight.AutoSize = True
+        Me.cprMenuHighlight.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.cprMenuHighlight.BackColor = System.Drawing.SystemColors.MenuHighlight
-        Me.cprMenuHighlight.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cprMenuHighlight.DropDownMenu = Me.cmsSystemColors
         Me.cprMenuHighlight.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.cprMenuHighlight.Location = New System.Drawing.Point(156, 84)
-        Me.cprMenuHighlight.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
+        Me.cprMenuHighlight.Location = New System.Drawing.Point(159, 87)
         Me.cprMenuHighlight.Name = "cprMenuHighlight"
         Me.cprMenuHighlight.RepresentedColor = AccentCS.App.CPRRepresentedColors.MenuHighlight
-        Me.cprMenuHighlight.Size = New System.Drawing.Size(116, 21)
+        Me.cprMenuHighlight.Size = New System.Drawing.Size(128, 22)
         Me.cprMenuHighlight.TabIndex = 8
         Me.cprMenuHighlight.UseVisualStyleBackColor = False
         '
         'cprHotTrack
         '
+        Me.cprHotTrack.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cprHotTrack.AutoSize = True
+        Me.cprHotTrack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.cprHotTrack.BackColor = System.Drawing.SystemColors.Control
-        Me.cprHotTrack.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cprHotTrack.DropDownMenu = Me.cmsSystemColors
         Me.cprHotTrack.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.cprHotTrack.Location = New System.Drawing.Point(156, 111)
-        Me.cprHotTrack.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
+        Me.cprHotTrack.Location = New System.Drawing.Point(159, 115)
         Me.cprHotTrack.Name = "cprHotTrack"
         Me.cprHotTrack.RepresentedColor = AccentCS.App.CPRRepresentedColors.HotTrack
-        Me.cprHotTrack.Size = New System.Drawing.Size(116, 22)
+        Me.cprHotTrack.Size = New System.Drawing.Size(128, 22)
         Me.cprHotTrack.TabIndex = 9
         Me.cprHotTrack.UseVisualStyleBackColor = False
         '
@@ -306,7 +310,7 @@ Partial Class frmMain
         '
         Me.btnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.btnOK.Location = New System.Drawing.Point(209, 250)
+        Me.btnOK.Location = New System.Drawing.Point(221, 318)
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(75, 23)
         Me.btnOK.TabIndex = 5
@@ -316,7 +320,8 @@ Partial Class frmMain
         'lblAccentColor
         '
         Me.lblAccentColor.AutoSize = True
-        Me.lblAccentColor.Location = New System.Drawing.Point(9, 13)
+        Me.lblAccentColor.Location = New System.Drawing.Point(0, 0)
+        Me.lblAccentColor.Margin = New System.Windows.Forms.Padding(0, 0, 3, 0)
         Me.lblAccentColor.Name = "lblAccentColor"
         Me.lblAccentColor.Size = New System.Drawing.Size(109, 13)
         Me.lblAccentColor.TabIndex = 7
@@ -325,11 +330,40 @@ Partial Class frmMain
         'lblSystemColors
         '
         Me.lblSystemColors.AutoSize = True
-        Me.lblSystemColors.Location = New System.Drawing.Point(9, 81)
+        Me.lblSystemColors.Location = New System.Drawing.Point(0, 62)
+        Me.lblSystemColors.Margin = New System.Windows.Forms.Padding(0, 10, 3, 0)
         Me.lblSystemColors.Name = "lblSystemColors"
         Me.lblSystemColors.Size = New System.Drawing.Size(165, 13)
         Me.lblSystemColors.TabIndex = 8
         Me.lblSystemColors.Text = "Apply the accent on these items:"
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel1.Controls.Add(Me.lblAccentColor, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.chkInstantOptionChanges, 0, 5)
+        Me.TableLayoutPanel1.Controls.Add(Me.tlpSystemColors, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.cprAccent, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblSystemColors, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblGeneral, 0, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.chkShowNotifyIcon, 0, 6)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(9, 9)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 7
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(290, 289)
+        Me.TableLayoutPanel1.TabIndex = 10
         '
         'chkInstantOptionChanges
         '
@@ -337,28 +371,54 @@ Partial Class frmMain
         Me.chkInstantOptionChanges.Checked = Global.AccentCS.App.My.MySettings.Default.General_InstantOptionChanges
         Me.chkInstantOptionChanges.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkInstantOptionChanges.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "General_InstantOptionChanges", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.chkInstantOptionChanges.Location = New System.Drawing.Point(12, 254)
+        Me.chkInstantOptionChanges.Location = New System.Drawing.Point(3, 241)
+        Me.chkInstantOptionChanges.Margin = New System.Windows.Forms.Padding(3, 3, 3, 8)
         Me.chkInstantOptionChanges.Name = "chkInstantOptionChanges"
-        Me.chkInstantOptionChanges.Size = New System.Drawing.Size(184, 17)
+        Me.chkInstantOptionChanges.Size = New System.Drawing.Size(210, 17)
         Me.chkInstantOptionChanges.TabIndex = 9
-        Me.chkInstantOptionChanges.Text = "Apply option changes in real time"
+        Me.chkInstantOptionChanges.Text = "Apply color option changes in real time"
         Me.chkInstantOptionChanges.UseVisualStyleBackColor = True
+        '
+        'lblGeneral
+        '
+        Me.lblGeneral.AutoSize = True
+        Me.lblGeneral.Location = New System.Drawing.Point(0, 225)
+        Me.lblGeneral.Margin = New System.Windows.Forms.Padding(0, 10, 3, 0)
+        Me.lblGeneral.Name = "lblGeneral"
+        Me.lblGeneral.Size = New System.Drawing.Size(86, 13)
+        Me.lblGeneral.TabIndex = 9
+        Me.lblGeneral.Text = "General options:"
+        '
+        'chkShowNotifyIcon
+        '
+        Me.chkShowNotifyIcon.AutoSize = True
+        Me.chkShowNotifyIcon.Checked = Global.AccentCS.App.My.MySettings.Default.General_ShowNotifyIcon
+        Me.chkShowNotifyIcon.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkShowNotifyIcon.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.AccentCS.App.My.MySettings.Default, "General_ShowNotifyIcon", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.chkShowNotifyIcon.Location = New System.Drawing.Point(3, 269)
+        Me.chkShowNotifyIcon.Name = "chkShowNotifyIcon"
+        Me.chkShowNotifyIcon.Size = New System.Drawing.Size(185, 17)
+        Me.chkShowNotifyIcon.TabIndex = 10
+        Me.chkShowNotifyIcon.Text = "Show icon in the notification area"
+        Me.chkShowNotifyIcon.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AcceptButton = Me.btnOK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(296, 285)
+        Me.ClientSize = New System.Drawing.Size(308, 353)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.Text = "App Name"
         Me.Controls.SetChildIndex(Me.FormContent, 0)
         Me.FormContent.ResumeLayout(False)
-        Me.FormContent.PerformLayout()
         Me.cmsAccentColor.ResumeLayout(False)
         Me.cmsSystemColors.ResumeLayout(False)
         Me.tlpSystemColors.ResumeLayout(False)
         Me.tlpSystemColors.PerformLayout()
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -387,4 +447,7 @@ Partial Class frmMain
     Friend WithEvents lblSystemColors As myLabel
     Friend WithEvents lblAccentColor As myLabel
     Friend WithEvents chkInstantOptionChanges As myCheckBox
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents lblGeneral As myLabel
+    Friend WithEvents chkShowNotifyIcon As myCheckBox
 End Class

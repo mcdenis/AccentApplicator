@@ -48,8 +48,12 @@ Namespace My
         End Sub
 
         Private Sub MyApplication_StartupNextInstance(sender As Object, e As StartupNextInstanceEventArgs) Handles Me.StartupNextInstance
-            e.BringToForeground = False 'We disable this because the app has no visible window most of the time anyway.
-            MsgBox(String.Format(Resources.LocalizedResources.Info_ExistingAppInstance, Application.Info.Title), MsgBoxStyle.Information)
+            If Settings.General_ShowNotifyIcon Then
+                e.BringToForeground = False 'We disable this because the app has no visible window most of the time anyway.
+                MsgBox(String.Format(Resources.LocalizedResources.Info_ExistingAppInstance, Application.Info.Title), MsgBoxStyle.Information)
+            Else
+                frmMain.ShowSingleInstance()
+            End If
         End Sub
 
     End Class

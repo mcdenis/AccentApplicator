@@ -26,6 +26,7 @@ Public NotInheritable Class frmMain
         Dim fontBold As New Font(Font, FontStyle.Bold)
         lblAccentColor.Font = fontBold
         lblSystemColors.Font = fontBold
+        lblGeneral.Font = fontBold
 
         'Only allow a preview rectangle to be clicked if its color is checked to be synced.
         For Each chk As myCheckBox In tlpSystemColors.Controls.OfType(Of myCheckBox)
@@ -44,6 +45,11 @@ Public NotInheritable Class frmMain
 
         'Listen to future changes and react accordignly in the handling method
         AddHandler My.Settings.PropertyChanged, AddressOf Settings_PropertyChanged
+    End Sub
+
+    Private Sub FormContent_Paint(sender As Object, e As PaintEventArgs) Handles FormContent.Paint
+        'Border3DStyle.SunkenOuter has the same appearance as a Label with a Fixed3D BorderStyle.
+        ControlPaint.DrawBorder3D(e.Graphics, 0, ClientSize.Height - btnOK.Height * 2, ClientSize.Width, 2, Border3DStyle.SunkenOuter, Border3DSide.Top Or Border3DSide.Bottom)
     End Sub
 
     Private Sub Settings_PropertyChanged(sender As Object, e As ComponentModel.PropertyChangedEventArgs)

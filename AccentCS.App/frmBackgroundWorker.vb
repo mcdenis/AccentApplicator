@@ -34,6 +34,14 @@ Public Class frmBackgroundWorker
             End Try
 
         End If
+
+        'Listen to future changes and react accordignly in the handling method
+        AddHandler My.Settings.PropertyChanged, AddressOf Settings_PropertyChanged
+    End Sub
+
+    Protected Overrides Sub OnFormClosed(e As FormClosedEventArgs)
+        RemoveHandler My.Settings.PropertyChanged, AddressOf Settings_PropertyChanged
+        MyBase.OnFormClosed(e)
     End Sub
 
     Private Sub tmrSpamProtection_Tick(sender As Object, e As EventArgs) Handles tmrSpamProtection.Tick
@@ -68,6 +76,12 @@ Public Class frmBackgroundWorker
 
             'Sets back the SafeToSync field to True after some time.
             tmrSpamProtection.Start()
+        End If
+    End Sub
+
+    Private Sub Settings_PropertyChanged(sender As Object, e As ComponentModel.PropertyChangedEventArgs)
+        If e.PropertyName = NameOf(My.Settings.General_ShowNotifyIcon) Then
+            NotifyIcon1.Visible = My.Settings.General_ShowNotifyIcon
         End If
     End Sub
 

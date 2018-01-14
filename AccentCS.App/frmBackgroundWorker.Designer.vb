@@ -79,7 +79,7 @@ Partial Class frmBackgroundWorker
         '
         Me.NotifyIcon1.ContextMenuStrip = Me.cmsNotifyIcon
         Me.NotifyIcon1.Text = "NotifyIcon1"
-        Me.NotifyIcon1.Visible = True
+        Me.NotifyIcon1.Visible = Global.AccentCS.App.My.MySettings.Default.General_ShowNotifyIcon
         '
         'frmBackgroundWorker
         '
