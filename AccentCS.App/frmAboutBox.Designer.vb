@@ -48,7 +48,7 @@ Partial Class frmAboutBox
         '
         Me.FormContent.Controls.Add(Me.TableLayoutPanel)
         Me.FormContent.Location = New System.Drawing.Point(9, 9)
-        Me.FormContent.Size = New System.Drawing.Size(329, 206)
+        Me.FormContent.Size = New System.Drawing.Size(329, 201)
         '
         'TableLayoutPanel
         '
@@ -72,7 +72,7 @@ Partial Class frmAboutBox
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
-        Me.TableLayoutPanel.Size = New System.Drawing.Size(329, 206)
+        Me.TableLayoutPanel.Size = New System.Drawing.Size(329, 201)
         Me.TableLayoutPanel.TabIndex = 0
         '
         'LabelProductNameAndVersion
@@ -119,7 +119,7 @@ Partial Class frmAboutBox
         '
         Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.OKButton.Location = New System.Drawing.Point(251, 180)
+        Me.OKButton.Location = New System.Drawing.Point(251, 175)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(75, 23)
         Me.OKButton.TabIndex = 0
@@ -130,7 +130,7 @@ Partial Class frmAboutBox
         Me.lbtWebsite.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbtWebsite.AutoSize = True
         Me.lbtWebsite.LinkColor = System.Drawing.SystemColors.HotTrack
-        Me.lbtWebsite.Location = New System.Drawing.Point(76, 190)
+        Me.lbtWebsite.Location = New System.Drawing.Point(76, 185)
         Me.lbtWebsite.Margin = New System.Windows.Forms.Padding(6, 2, 3, 3)
         Me.lbtWebsite.Name = "lbtWebsite"
         Me.lbtWebsite.Size = New System.Drawing.Size(116, 13)
@@ -145,15 +145,15 @@ Partial Class frmAboutBox
         Me.lbtLicense.AutoSize = True
         Me.TableLayoutPanel.SetColumnSpan(Me.lbtLicense, 2)
         Me.lbtLicense.LinkColor = System.Drawing.SystemColors.HotTrack
-        Me.lbtLicense.Location = New System.Drawing.Point(76, 80)
+        Me.lbtLicense.Location = New System.Drawing.Point(76, 78)
         Me.lbtLicense.Margin = New System.Windows.Forms.Padding(6, 8, 3, 0)
         Me.lbtLicense.Name = "lbtLicense"
-        Me.lbtLicense.Size = New System.Drawing.Size(240, 78)
+        Me.lbtLicense.Size = New System.Drawing.Size(242, 78)
         Me.lbtLicense.TabIndex = 2
         Me.lbtLicense.TabStop = True
         Me.lbtLicense.Text = "This software is published under the MIT license." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "The icon is a creation of Pi" &
-    "xel Buddha from www.flaticon.com." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Portions of this code provided by Bob Powel" &
-    "l."
+    "xel Buddha from www.flaticon.com." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Portions of this code are provided by Bob P" &
+    "owell."
         '
         'pnlBranding
         '
@@ -162,7 +162,7 @@ Partial Class frmAboutBox
         Me.pnlBranding.Location = New System.Drawing.Point(3, 3)
         Me.pnlBranding.Name = "pnlBranding"
         Me.TableLayoutPanel.SetRowSpan(Me.pnlBranding, 5)
-        Me.pnlBranding.Size = New System.Drawing.Size(64, 200)
+        Me.pnlBranding.Size = New System.Drawing.Size(64, 195)
         Me.pnlBranding.TabIndex = 3
         '
         'picLogo
@@ -181,7 +181,7 @@ Partial Class frmAboutBox
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.OKButton
-        Me.ClientSize = New System.Drawing.Size(347, 224)
+        Me.ClientSize = New System.Drawing.Size(347, 219)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MinimizeBox = False
         Me.Name = "frmAboutBox"
