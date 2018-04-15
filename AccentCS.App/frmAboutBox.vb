@@ -25,8 +25,8 @@ Public NotInheritable Class frmAboutBox
         'Configure the LinkLabels
         lbtWebsite.Links(0).LinkData = My.Resources.ExternalLink_ProjectURL
         lbtLicense.Links.Add(37, 11, Application.StartupPath + My.Resources.ExternalLink_LicenseURI)
-        lbtLicense.Links.Add(73, 12, My.Resources.ExternalLink_IconAuthorPageURL)
-        lbtLicense.Links.Add(91, 16, My.Resources.ExternalLink_FlatIconURL)
+        lbtLicense.Links.Add(79, 12, My.Resources.ExternalLink_IconAuthorPageURL)
+        lbtLicense.Links.Add(97, 16, My.Resources.ExternalLink_FlatIconURL)
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles OKButton.Click
