@@ -48,7 +48,7 @@ Partial Class frmAboutBox
         '
         Me.FormContent.Controls.Add(Me.TableLayoutPanel)
         Me.FormContent.Location = New System.Drawing.Point(9, 9)
-        Me.FormContent.Size = New System.Drawing.Size(329, 201)
+        Me.FormContent.Size = New System.Drawing.Size(355, 201)
         '
         'TableLayoutPanel
         '
@@ -72,18 +72,18 @@ Partial Class frmAboutBox
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
-        Me.TableLayoutPanel.Size = New System.Drawing.Size(329, 201)
+        Me.TableLayoutPanel.Size = New System.Drawing.Size(355, 201)
         Me.TableLayoutPanel.TabIndex = 0
         '
         'LabelProductNameAndVersion
         '
         Me.TableLayoutPanel.SetColumnSpan(Me.LabelProductNameAndVersion, 2)
         Me.LabelProductNameAndVersion.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelProductNameAndVersion.Location = New System.Drawing.Point(76, 2)
+        Me.LabelProductNameAndVersion.Location = New System.Drawing.Point(82, 2)
         Me.LabelProductNameAndVersion.Margin = New System.Windows.Forms.Padding(6, 2, 3, 2)
         Me.LabelProductNameAndVersion.MaximumSize = New System.Drawing.Size(0, 17)
         Me.LabelProductNameAndVersion.Name = "LabelProductNameAndVersion"
-        Me.LabelProductNameAndVersion.Size = New System.Drawing.Size(250, 17)
+        Me.LabelProductNameAndVersion.Size = New System.Drawing.Size(270, 17)
         Me.LabelProductNameAndVersion.TabIndex = 0
         Me.LabelProductNameAndVersion.Text = "Product Name + Version"
         Me.LabelProductNameAndVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -92,11 +92,11 @@ Partial Class frmAboutBox
         '
         Me.TableLayoutPanel.SetColumnSpan(Me.LabelCopyright, 2)
         Me.LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelCopyright.Location = New System.Drawing.Point(76, 23)
+        Me.LabelCopyright.Location = New System.Drawing.Point(82, 23)
         Me.LabelCopyright.Margin = New System.Windows.Forms.Padding(6, 2, 3, 2)
         Me.LabelCopyright.MaximumSize = New System.Drawing.Size(0, 17)
         Me.LabelCopyright.Name = "LabelCopyright"
-        Me.LabelCopyright.Size = New System.Drawing.Size(250, 17)
+        Me.LabelCopyright.Size = New System.Drawing.Size(270, 17)
         Me.LabelCopyright.TabIndex = 0
         Me.LabelCopyright.Text = "Copyright"
         Me.LabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -105,12 +105,12 @@ Partial Class frmAboutBox
         '
         Me.TableLayoutPanel.SetColumnSpan(Me.TextBoxDescription, 2)
         Me.TextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBoxDescription.Location = New System.Drawing.Point(76, 44)
+        Me.TextBoxDescription.Location = New System.Drawing.Point(82, 44)
         Me.TextBoxDescription.Margin = New System.Windows.Forms.Padding(6, 2, 3, 2)
         Me.TextBoxDescription.Name = "TextBoxDescription"
         Me.TextBoxDescription.ReadOnly = True
         Me.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBoxDescription.Size = New System.Drawing.Size(250, 20)
+        Me.TextBoxDescription.Size = New System.Drawing.Size(270, 20)
         Me.TextBoxDescription.TabIndex = 0
         Me.TextBoxDescription.TabStop = False
         Me.TextBoxDescription.Text = resources.GetString("TextBoxDescription.Text")
@@ -119,7 +119,7 @@ Partial Class frmAboutBox
         '
         Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.OKButton.Location = New System.Drawing.Point(251, 175)
+        Me.OKButton.Location = New System.Drawing.Point(277, 175)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(75, 23)
         Me.OKButton.TabIndex = 0
@@ -130,7 +130,7 @@ Partial Class frmAboutBox
         Me.lbtWebsite.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lbtWebsite.AutoSize = True
         Me.lbtWebsite.LinkColor = System.Drawing.SystemColors.HotTrack
-        Me.lbtWebsite.Location = New System.Drawing.Point(76, 185)
+        Me.lbtWebsite.Location = New System.Drawing.Point(82, 185)
         Me.lbtWebsite.Margin = New System.Windows.Forms.Padding(6, 2, 3, 3)
         Me.lbtWebsite.Name = "lbtWebsite"
         Me.lbtWebsite.Size = New System.Drawing.Size(116, 13)
@@ -145,7 +145,7 @@ Partial Class frmAboutBox
         Me.lbtLicense.AutoSize = True
         Me.TableLayoutPanel.SetColumnSpan(Me.lbtLicense, 2)
         Me.lbtLicense.LinkColor = System.Drawing.SystemColors.HotTrack
-        Me.lbtLicense.Location = New System.Drawing.Point(76, 78)
+        Me.lbtLicense.Location = New System.Drawing.Point(82, 78)
         Me.lbtLicense.Margin = New System.Windows.Forms.Padding(6, 8, 3, 0)
         Me.lbtLicense.Name = "lbtLicense"
         Me.lbtLicense.Size = New System.Drawing.Size(242, 78)
@@ -162,7 +162,7 @@ Partial Class frmAboutBox
         Me.pnlBranding.Location = New System.Drawing.Point(3, 3)
         Me.pnlBranding.Name = "pnlBranding"
         Me.TableLayoutPanel.SetRowSpan(Me.pnlBranding, 5)
-        Me.pnlBranding.Size = New System.Drawing.Size(64, 195)
+        Me.pnlBranding.Size = New System.Drawing.Size(70, 195)
         Me.pnlBranding.TabIndex = 3
         '
         'picLogo
@@ -172,7 +172,7 @@ Partial Class frmAboutBox
         Me.picLogo.Location = New System.Drawing.Point(0, 3)
         Me.picLogo.Margin = New System.Windows.Forms.Padding(0, 3, 3, 3)
         Me.picLogo.Name = "picLogo"
-        Me.picLogo.Size = New System.Drawing.Size(61, 50)
+        Me.picLogo.Size = New System.Drawing.Size(59, 50)
         Me.picLogo.TabIndex = 0
         Me.picLogo.TabStop = False
         '
@@ -181,7 +181,7 @@ Partial Class frmAboutBox
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.OKButton
-        Me.ClientSize = New System.Drawing.Size(347, 219)
+        Me.ClientSize = New System.Drawing.Size(373, 219)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MinimizeBox = False
         Me.Name = "frmAboutBox"
