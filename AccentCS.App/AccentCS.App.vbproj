@@ -11,8 +11,9 @@
     <AssemblyName>AccentCS.App</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,6 +81,8 @@
   <ItemGroup>
     <Compile Include="Application.vb" />
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Events\ControlEventArgs.vb" />
+    <Compile Include="Events\SystemColorEventArgs.vb" />
     <Compile Include="ExtensionMethods.vb" />
     <Compile Include="frmAboutBox.Designer.vb">
       <DependentUpon>frmAboutBox.vb</DependentUpon>
@@ -99,10 +102,12 @@
     <Compile Include="frmBrightnessSettings.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.vb">
+    <Compile Include="Presenters\MainPresenter.vb" />
+    <Compile Include="Presenters\Presenter.vb" />
+    <Compile Include="Views\frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.vb">
+    <Compile Include="Views\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -159,6 +164,8 @@
     <Compile Include="Settings.vb" />
     <Compile Include="Synchronizer.vb" />
     <Compile Include="UserSettings.vb" />
+    <Compile Include="Views\Interfaces\IMainView.vb" />
+    <Compile Include="Views\Interfaces\IView.vb" />
     <Compile Include="Win32Value.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +178,7 @@
     <EmbeddedResource Include="frmBrightnessSettings.resx">
       <DependentUpon>frmBrightnessSettings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Views\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -203,6 +210,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccentApplicator.Core\AccentApplicator.Core.csproj">
+      <Project>{f50154b0-9b0f-416c-8215-30cfb138dfe2}</Project>
+      <Name>AccentApplicator.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccentCS.Controls\AccentCS.Controls.vbproj">
       <Project>{07a9de3e-5059-4f8d-9f2c-d6a076f4779a}</Project>
       <Name>AccentCS.Controls</Name>
@@ -218,6 +229,7 @@
   <ItemGroup>
     <Content Include="AccentCS.App.exe.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,5 @@
 ﻿Imports System.Resources
+Imports AccentCS.App.Views
 Imports AccentCS.Controls
 Imports AccentCS.Helpers
 

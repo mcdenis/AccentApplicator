@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AccentCS.Controls", "AccentCS.Controls\AccentCS.Controls.vbproj", "{07A9DE3E-5059-4F8D-9F2C-D6A076F4779A}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AccentCS.Helpers", "AccentCS.Helpers\AccentCS.Helpers.vbproj", "{8544D4D9-1F67-47B1-BDDC-58BD9126218B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AccentCS.App", "AccentCS.App\AccentCS.App.vbproj", "{486C681D-F703-4E37-87C3-6A473B2EB555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccentApplicator.Core", "AccentApplicator.Core\AccentApplicator.Core.csproj", "{F50154B0-9B0F-416C-8215-30CFB138DFE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +29,15 @@ Global
 		{486C681D-F703-4E37-87C3-6A473B2EB555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{486C681D-F703-4E37-87C3-6A473B2EB555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{486C681D-F703-4E37-87C3-6A473B2EB555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50154B0-9B0F-416C-8215-30CFB138DFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50154B0-9B0F-416C-8215-30CFB138DFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50154B0-9B0F-416C-8215-30CFB138DFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50154B0-9B0F-416C-8215-30CFB138DFE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38DCF92B-4740-4E2D-A873-E6DCA7CB05F2}
 	EndGlobalSection
 EndGlobal
