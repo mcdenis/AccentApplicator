@@ -11,6 +11,6 @@ reducing the disparities between the classic desktop environment and Universal a
 
 ![Example 1](http://i.imgur.com/gXz95Qk.png)
 
-[More picture](http://imgur.com/a/X9154)
+[More pictures](http://imgur.com/a/X9154)
 ## License
 This program is published under the MIT license.
