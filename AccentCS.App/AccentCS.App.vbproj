@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Application.vb" />
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="CustomApplicators\AccentableSystemColorApplicator.vb" />
     <Compile Include="Events\ControlEventArgs.vb" />
     <Compile Include="Events\SystemColorEventArgs.vb" />
     <Compile Include="ExtensionMethods.vb" />
@@ -96,10 +97,11 @@
     <Compile Include="frmBackgroundWorker.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBrightnessSettings.Designer.vb">
+    <Compile Include="Presenters\BrightnessSettingsPresenter.vb" />
+    <Compile Include="Views\frmBrightnessSettings.Designer.vb">
       <DependentUpon>frmBrightnessSettings.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBrightnessSettings.vb">
+    <Compile Include="Views\frmBrightnessSettings.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presenters\MainPresenter.vb" />
@@ -164,6 +166,8 @@
     <Compile Include="Settings.vb" />
     <Compile Include="Synchronizer.vb" />
     <Compile Include="UserSettings.vb" />
+    <Compile Include="Views\Interfaces\IBrightnessSettingsView.vb" />
+    <Compile Include="Views\Interfaces\IDialogView.vb" />
     <Compile Include="Views\Interfaces\IMainView.vb" />
     <Compile Include="Views\Interfaces\IView.vb" />
     <Compile Include="Win32Value.vb" />
@@ -175,7 +179,7 @@
     <EmbeddedResource Include="frmBackgroundWorker.resx">
       <DependentUpon>frmBackgroundWorker.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBrightnessSettings.resx">
+    <EmbeddedResource Include="Views\frmBrightnessSettings.resx">
       <DependentUpon>frmBrightnessSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmMain.resx">

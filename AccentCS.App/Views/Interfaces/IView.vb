@@ -7,9 +7,9 @@
         Event Load As EventHandler
 
         ''' <summary>
-        '''     Show the view.
+        '''     Shows the view.
         ''' </summary>
-        Sub Show()
+        Sub Show(owner As IWin32Window)
 
         ''' <summary>
         '''     Main text associated with the view. For example,

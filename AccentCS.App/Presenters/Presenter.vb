@@ -1,9 +1,11 @@
-﻿Namespace Presenters
+﻿Imports AccentCS.App.Views
+
+Namespace Presenters
     ''' <summary>
     '''     Base class for presenters.
     ''' </summary>
     ''' <typeparam name="TView">Type of the view. Ideally an interface. Ex. IMainView</typeparam>
-    Public MustInherit Class Presenter(Of TView)
+    Public MustInherit Class Presenter(Of TView As IView)
         ''' <summary>
         '''     View that this presenter instance is manipulating.
         ''' </summary>

@@ -1,5 +1,8 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.ComponentModel
+Imports System.Configuration
+Imports AccentApplicator.Core
+Imports AccentApplicator.Core.Applicator
 Imports AccentCS.Helpers
 
 Namespace My
@@ -154,5 +157,13 @@ Namespace My
 
             _foreSystemColorsUserValues = New ReadOnlyDictionary(Of SystemColorIDs, Color)(_writableForeSysColorsUsrValues)
         End Sub
+
+        <UserScopedSetting>
+        <SettingsSerializeAs(SettingsSerializeAs.Binary)> 'The out-of-the-box dictionary does not support XML serialization
+        Public ReadOnly Property ApplicatorConfiguration As IDictionary(Of SystemColorId, ColorConfiguration)
+            Get
+                Return DirectCast(Me(NameOf(ApplicatorConfiguration)), IDictionary(Of SystemColorId, ColorConfiguration))
+            End Get
+        End Property
     End Class
 End Namespace

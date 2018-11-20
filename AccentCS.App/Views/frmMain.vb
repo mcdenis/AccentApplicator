@@ -6,53 +6,8 @@ Imports AccentApplicator.Core
 
 Namespace Views
     Public NotInheritable Class frmMain
-        Implements IMainView
 
         Private ContextMenuRend As ToolStripSystemRendererEx
-
-#Region "IMainView members"
-        Public Event BrightnessSettingsClicked As EventHandler(Of SystemColorEventArgs) Implements IMainView.BrightnessSettingsClicked
-        Public Event SetForeColorClicked As EventHandler(Of SystemColorEventArgs) Implements IMainView.SetForeColorClicked
-        Public Event SystemColorConfigMenuShowing As EventHandler(Of ControlEventArgs(Of ContextMenuStrip)) Implements IMainView.SystemColorConfigMenuShowing
-
-        'Make this implementation explicit because the Form class already has the Text property that does the same thing
-        Private Property Caption As String Implements IMainView.Caption
-            Get
-                Return Text
-            End Get
-            Set(value As String)
-                Text = value
-            End Set
-        End Property
-
-        'This events is already implemented in the base class, but VB is dumb and forces us to reimplement it.
-        Private Event IView_Load As EventHandler Implements IView.Load
-
-
-        Public Sub SetAccentPreviewTooltipText(text As String) Implements IMainView.SetAccentPreviewTooltipText
-            Throw New NotImplementedException()
-        End Sub
-
-        Public Sub SetSystemColorPreviewTooltipText(systemColorId As SystemColorId, systemColortext As String) Implements IMainView.SetSystemColorPreviewTooltipText
-            Throw New NotImplementedException()
-        End Sub
-#End Region
-
-#Region "Custom Event Methods"
-        Private Sub OnSystemColorConfigMenuShowing(e As ControlEventArgs(Of ContextMenuStrip))
-            RaiseEvent SystemColorConfigMenuShowing(Me, e)
-        End Sub
-
-        Private Sub OnBrightnessSettingsClicked(e As SystemColorEventArgs)
-            RaiseEvent BrightnessSettingsClicked(Me, e)
-        End Sub
-#End Region
-
-
-        Protected Overrides Sub OnLoad(e As EventArgs)
-            MyBase.OnLoad(e)
-            RaiseEvent IView_Load(Me, e)
-        End Sub
 
         Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -93,14 +48,14 @@ Namespace Views
         'CONTEXT MENU FOR SYSTEM COLORS
 
         Private Sub cmsSystemColors_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cmsSystemColors.Opening
-            OnSystemColorConfigMenuShowing(New ControlEventArgs(Of ContextMenuStrip)(cmsSystemColors))
+
         End Sub
 
         Private Sub tmiSystemColors_BrightnessSettings_Click(sender As Object, e As EventArgs) Handles tmiSystemColors_BrightnessSettings.Click
             Dim ctrlSender = DirectCast(sender, Control)
             Dim sysColorId As SystemColorId = DirectCast([Enum].Parse(GetType(SystemColorId), ctrlSender.Tag.ToString()), SystemColorId)
 
-            OnBrightnessSettingsClicked(New SystemColorEventArgs(sysColorId))
+
         End Sub
 
         Private Sub tmiSystemColors_ChangeForegroundColor_Click(sender As Object, e As EventArgs) Handles tmiSystemColors_ChangeForegroundColor.Click
@@ -139,22 +94,6 @@ Namespace Views
         End Sub
 
         ''' <summary>
-        ''' Refresh the UI elements representing the accent color.
-        ''' </summary>
-        Private Sub RefreshAccentColorControls()
-            If colAccent.IsEmpty = False Then
-                cprAccent.BackColor = colAccent
-                ToolTip1.SetToolTip(cprAccent, My.Resources.LocalizedResources.Caption_CurrentRGBValue +
-                                Environment.NewLine + colAccent.ToRGBString() +
-                                Environment.NewLine + Environment.NewLine +
-                                My.Resources.LocalizedResources.Caption_ClickToChangeAccentSource)
-            Else
-                cprAccent.BackColor = Color.White
-                ToolTip1.SetToolTip(cprAccent, My.Resources.LocalizedResources.Error_InvalidColor)
-            End If
-        End Sub
-
-        ''' <summary>
         ''' Refresh the UI elements representing a specific to a system color.
         ''' </summary>
         Private Sub RefreshSystemColorControls()
@@ -182,27 +121,6 @@ Namespace Views
 
         Private Sub btnOK_Click(sender As Object, e As EventArgs) Handles btnOK.Click
             Close()
-        End Sub
-
-        Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-            If Not My.Settings.General_InstantOptionChanges Then
-                Try
-                    'We need to restore all the system colors to their defaults (exept the fore colors) before applying their new values 
-                    'because we don't know which color was initially configured to be synced then configured not
-                    'to be (there is surely a way but that's it for now.)
-
-                    SystemColorManipulation.RestoreDefaultColors(SyncableSystemColorIDs.ToArray)
-                    Threading.Thread.Sleep(200) 'just to give some time to the SetSysColor Win32 function to do its stuff.
-                    Synchronizer.Instance.SyncNow(colAccent)
-                Catch ex As Exception
-                    MsgBox(ex.Message, MsgBoxStyle.Critical)
-                    e.Cancel = True
-                End Try
-            End If
-        End Sub
-
-        Private Sub IView_Show() Implements IView.Show
-            Throw New NotImplementedException()
         End Sub
     End Class
 
