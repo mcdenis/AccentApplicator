@@ -121,7 +121,9 @@ Public Class ToolStripSystemRendererEx
             vsRenderer.DrawBackground(e.Graphics, e.AffectedBounds)
         Else
             Dim popupBackColor As Color = vsRenderer.GetColor(ColorProperty.FillColor)
-            e.Graphics.FillRectangle(New SolidBrush(popupBackColor), e.AffectedBounds)
+            Using b As New SolidBrush(popupBackColor)
+                e.Graphics.FillRectangle(b, e.AffectedBounds)
+            End Using
         End If
     End Sub
 
