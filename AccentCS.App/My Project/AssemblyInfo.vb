@@ -10,10 +10,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Accent Applicator")>
-<Assembly: AssemblyDescription("Apply your accent color on desktop applications.")>
+<Assembly: AssemblyDescription("Utility that applies your accent color on desktop apps.")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("Accent Applicator")>
-<Assembly: AssemblyCopyright("©  2018 Maxime Denis")>
+<Assembly: AssemblyCopyright("©  2019 Maxime Denis")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -32,6 +32,6 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.2.0")>
-<Assembly: AssemblyFileVersion("1.0.2.0")>
+<Assembly: AssemblyVersion("1.0.3.0")>
+<Assembly: AssemblyFileVersion("1.0.3.0")>
 <Assembly: NeutralResourcesLanguage("en")>
